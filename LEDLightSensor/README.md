@@ -9,3 +9,6 @@ pin 0 to ground.
   on pin 13 if it is dark.
 * Fading - Like threshold, but uses `analogWrite()` to fade the LED on
   pin 13 in and out depending on how dark it is.
+
+The `LED Light Sensor.fzz` file includes circuit diagram for how to
+wire everything up. It uses Fritzing.
