@@ -23,36 +23,13 @@ void setup() {
   // Initialize random number generator
   Serial.begin(9600);
   for(int i = 0; i < NUM_MOLES; ++i) {
-    digitalWrite(moles[i].out_pin, HIGH);
+    mole_t &mole = moles[i];
+    pinMode(mole.out_pin, OUTPUT);
+    digitalWrite(mole.out_pin, HIGH);
   }
 }
 
 void loop() {
-/*
-  if(Serial.available()) {
-    int i = Serial.read() - '0';
-    if(0 <= i && i < 3) {
-      mole_t &mole = moles[i];
-      
-      if(mole.state > 0) {
-        digitalWrite(mole.out_pin, HIGH);
-        Serial.print("Lowering mole number ");
-        Serial.println(i);
-        mole.state = 0;
-      }
-      else {
-        Serial.print("Raising mole number ");
-        Serial.println(i);
-        digitalWrite(mole.out_pin, LOW);
-        mole.state = random(MIN_UP, MAX_UP);
-      }
-    }
-    else {
-      Serial.println("Invalid Mole");
-    }
-  }
-*/  
-  
   for(int i = 0; i < NUM_MOLES; ++i) {
     mole_t &mole = moles[i];
     if(mole.state > 0) {
