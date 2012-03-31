@@ -4,7 +4,7 @@
 
 const int NUM_MOLES = 3;
 const int RISE_FACTOR = 10000;
-const int MIN_UP = 1000;
+const int MIN_UP = 10000;
 const int MAX_UP = 100000;
 
 struct mole_t {
@@ -28,6 +28,7 @@ void setup() {
 }
 
 void loop() {
+/*
   if(Serial.available()) {
     int i = Serial.read() - '0';
     if(0 <= i && i < 3) {
@@ -50,8 +51,8 @@ void loop() {
       Serial.println("Invalid Mole");
     }
   }
+*/  
   
-/*  
   for(int i = 0; i < NUM_MOLES; ++i) {
     mole_t &mole = moles[i];
     if(mole.state > 0) {
@@ -61,7 +62,7 @@ void loop() {
       
       // Then decrement the time to fall, and fall if necessary
       if(!--mole.state) {
-        digitalWrite(mole.out_pin, LOW);
+        digitalWrite(mole.out_pin, HIGH);
         Serial.print("Lowering mole number ");
         Serial.println(i);
       }
@@ -70,10 +71,9 @@ void loop() {
       if(!random(RISE_FACTOR)) {
         Serial.print("Raising mole number ");
         Serial.println(i);
-        digitalWrite(mole.out_pin, HIGH);
+        digitalWrite(mole.out_pin, LOW);
         mole.state = random(MIN_UP, MAX_UP);
       }
     }
   }
-*/
 }
