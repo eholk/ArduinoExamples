@@ -14,10 +14,12 @@ struct mole_t {
 };
 
 mole_t moles[] = {
-  {5, -1, 0},
-  {6, -1, 0},
-  {7, -1, 0}
+  {5, 4, 0},
+  {6, 3, 0},
+  {7, 2, 0}
 };
+
+int score = 0;
 
 void setup() {
   // Initialize random number generator
@@ -25,6 +27,7 @@ void setup() {
   for(int i = 0; i < NUM_MOLES; ++i) {
     mole_t &mole = moles[i];
     pinMode(mole.out_pin, OUTPUT);
+    pinMode(mole.in_pin, INPUT);
     digitalWrite(mole.out_pin, HIGH);
   }
 }
@@ -36,6 +39,16 @@ void loop() {
       // Mole is up.
       
       // First check if it's been whacked.
+      if(digitalRead(mole.in_pin)) {
+        Serial.print("Whacked mole number ");
+        Serial.println(i);
+        digitalWrite(mole.out_pin, HIGH);
+        mole.state = 0;
+        score++;
+        
+        Serial.print("Score is ");
+        Serial.println(score);
+      }
       
       // Then decrement the time to fall, and fall if necessary
       if(!--mole.state) {
