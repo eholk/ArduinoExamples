@@ -2,6 +2,21 @@
   Whack-a-mole
 */
 
+/**
+  Ideas for enhancements:
+  
+  1. The game should have a time limit. You should start the game and have 
+     it run for something like 30 seconds or two minutes to see how many
+     points you can get in that time.
+     
+  2. While the game is not going on, there should be a demo mode.
+  
+  3. It'd be good to have a power switch.
+  
+  4. There should be lights and sounds. A good example would be feedback for
+     when you whack the mole.
+*/
+
 const int NUM_MOLES = 3;
 const int RISE_FACTOR = 10000;
 const int MIN_UP = 10000;
