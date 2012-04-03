@@ -17,7 +17,6 @@
      when you whack the mole.
 */
 
-const int NUM_MOLES = 3;
 const int RISE_FACTOR = 10000;
 const int MIN_UP = 10000;
 const int MAX_UP = 100000;
@@ -34,7 +33,11 @@ mole_t moles[] = {
   {7, 2, 0}
 };
 
+const int NUM_MOLES = sizeof(moles) / sizeof(moles[0]);
+
 int score = 0;
+
+void startPlayback();
 
 void setup() {
   // Initialize random number generator
@@ -45,6 +48,8 @@ void setup() {
     pinMode(mole.in_pin, INPUT);
     digitalWrite(mole.out_pin, HIGH);
   }
+  
+  startPlayback();
 }
 
 void loop() {
